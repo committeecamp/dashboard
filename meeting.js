@@ -17,7 +17,7 @@ window.onload = async () => {
 
     for (let i in filteredMeetings) {
       months.push(new Date(meetingArrReversed[i].meeting_date).toLocaleString('default', { month: 'short' }));
-      attendance.push(meetingArrReversed[i]._attendance.length)
+      attendance.push(meetingArrReversed[i]._attendance.filter(i => i.committee_members_id !== 0).length)
       guestAttendance.push(meetingArrReversed[i]._attendance.filter(i => i.committee_guests_id !== 0).length)
     }
 
