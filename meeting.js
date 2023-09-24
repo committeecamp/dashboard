@@ -13,11 +13,15 @@ window.onload = async () => {
     let meetingYearThree = meetingArrReversed.slice(24,36);
     let attendance = [];
     let months = [];
+    let guestAttendance = [];
 
     for (let i in filteredMeetings) {
       months.push(new Date(meetingArrReversed[i].meeting_date).toLocaleString('default', { month: 'short' }));
       attendance.push(meetingArrReversed[i]._attendance.length)
+      guestAttendance.push(meetingArrReversed[i]._attendance.filter(i => i.committee_guests_id !== 0).length)
     }
+
+    console.log(guestAttendance)
 
     Chart.defaults.color = '#c0c0c0';
     Chart.defaults.borderColor = '#ebedf0';
